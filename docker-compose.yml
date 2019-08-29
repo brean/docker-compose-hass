@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  home_assistant:
+    image: homeassistant/raspberrypi3-homeassistant:${HASS_VERSION}
+    ports:
+    - 8123:8123
+    volumes:
+    - /home/pi/home_assistant:/config
+    networks:
+    - hass
+
+
+networks:
+  hass:
