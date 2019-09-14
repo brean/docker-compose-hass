@@ -1,16 +1,14 @@
 version: '3'
 
 services:
-
-
   home_assistant:
     image: homeassistant/raspberrypi3-homeassistant:${HASS_VERSION}
     volumes:
     - /home/pi/home_assistant:/config
+    ports:
+    - "5684:5684/udp" # tradfri
     networks:
-    - hass
     - proxy
-
 
   nginx:
     image: nginx:latest
@@ -27,5 +25,4 @@ services:
 
 
 networks:
-  hass:
   proxy:
