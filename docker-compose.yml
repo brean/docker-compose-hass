@@ -3,6 +3,7 @@ version: '3'
 services:
   home_assistant:
     image: homeassistant/raspberrypi3-homeassistant:${HASS_VERSION}
+    restart: always
     volumes:
     - /home/pi/home_assistant:/config
     ports:
@@ -13,6 +14,7 @@ services:
   nginx:
     image: nginx:latest
     container_name: home_nginx
+    restart: always
     depends_on:
       - home_assistant
     ports:
