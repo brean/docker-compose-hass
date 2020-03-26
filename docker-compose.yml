@@ -33,7 +33,7 @@ services:
     container_name: mosquitto
     restart: always
     ports:
-      - 1883:1833 # mqtt
+      - 1883:1883 # mqtt
       - 9001:9001 # Websocket mqtt
     volumes:
       - ./volumes/mqtt/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
