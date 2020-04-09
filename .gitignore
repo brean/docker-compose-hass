@@ -1,2 +1,5 @@
 /volumes/mqtt/data/mosquitto.db
 /volumes/mqtt/log/mosquitto.log
+/volumes/zigbee2mqtt/log/
+/volumes/zigbee2mqtt/database.db
+/volumes/zigbee2mqtt/state.json
