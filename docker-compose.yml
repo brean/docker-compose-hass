@@ -25,5 +25,25 @@ services:
     networks:
       - proxy
 
+  deconz:
+    image: marthoc/deconz
+    container_name: deconz
+    restart: always
+    volumes:
+      - /home/pi/deconz:/root/.local/share/dresden-elektronik/deCONZ
+    devices:
+      - /dev/ttyACM0
+    ports:
+      - "6090:6090"
+      - "6443:6443"
+    environment:
+      - DECONZ_WEB_PORT=6090
+      - DECONZ_WS_PORT=6443
+      - DEBUG_INFO=1
+      - DEBUG_APS=0
+      - DEBUG_ZCL=0
+      - DEBUG_ZDP=0
+      - DEBUG_OTAU=0
+
 networks:
   proxy:
