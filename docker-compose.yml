@@ -28,35 +28,5 @@ services:
     networks:
       - proxy
 
-  mqtt:
-    image: eclipse-mosquitto:latest
-    container_name: mosquitto
-    restart: always
-    ports:
-      - 1883:1883 # mqtt
-      - 9001:9001 # Websocket mqtt
-    volumes:
-      - ./volumes/mqtt/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
-      - ./volumes/mqtt/data:/mosquitto/data
-      - ./volumes/mqtt/log:/mosquitto/log
-    networks:
-      - mqtt
-
-  zigbee2mqtt:
-    container_name: zigbee2mqtt
-    image: koenkk/zigbee2mqtt
-    volumes:
-      - ./volumes/zigbee2mqtt:/app/data
-      - /run/udev:/run/udev:ro
-    devices:
-      - /dev/ttyACM0:/dev/ttyACM0
-    restart: always
-    privileged: true
-    environment:
-      - TZ=Europe/Amsterdam
-    networks:
-      - mqtt
-
 networks:
   proxy:
-  mqtt:
