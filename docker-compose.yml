@@ -4,15 +4,12 @@ services:
   home_assistant:
     image: homeassistant/raspberrypi3-homeassistant:${HASS_VERSION}
     restart: always
-    depends_on:
-    - mqtt
     volumes:
     - /home/pi/home_assistant:/config
     ports:
     - "5684:5684/udp" # tradfri
     networks:
     - proxy
-    - mqtt
 
   nginx:
     image: nginx:latest
